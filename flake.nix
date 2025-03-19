@@ -4,15 +4,20 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    home-manager.url = "github:nix-community/home-manager";
-    # nvf.url = "github:notashelf/nvf";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, nixos-wsl, home-manager, ... }:
+  outputs = { nixpkgs, nixos-wsl, home-manager, nvf, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      basePkgs = with pkgs; [ wget curl vim ];
     in {
       nixosConfigurations = {
         wsl = nixpkgs.lib.nixosSystem {
@@ -38,7 +43,7 @@
               wsl.enable = true;
               wsl.defaultUser = "liribell";
 
-              environment.systemPackages = basePkgs;
+              # environment.systemPackages = [ customNeovim.neovim ];
               system.stateVersion = "24.11";
             }
 
@@ -47,6 +52,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
+              home-manager.extraSpecialArgs = { inherit nvf; };
               home-manager.users.liribell = import ./home.nix;
             }
           ];

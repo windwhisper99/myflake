@@ -1,6 +1,11 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  nvf,
+  ...
+}: {
+  imports = [nvf.homeManagerModules.default];
+
   home.packages = with pkgs; [
     fastfetch
     nnn
@@ -22,6 +27,59 @@
     fzf
   ];
 
+  programs.nvf = {
+    enable = true;
+
+    # theme.enable = true;
+    # theme.name = "gruvbox";
+    # theme.style = "dark";
+
+    settings = {
+      vim.viAlias = false;
+      vim.vimAlias = true;
+
+      vim.theme.enable = true;
+      vim.theme.name = "gruvbox";
+      vim.theme.style = "dark";
+
+      vim.treesitter = {
+        enable = true;
+        autotagHtml = true;
+      };
+      vim.lsp = {
+        enable = true;
+        formatOnSave = true;
+      };
+
+      vim.languages = {
+        nix = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+        };
+
+        html = {
+          enable = true;
+          treesitter = {
+            enable = true;
+            autotagHtml = true;
+          };
+        };
+        ts = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+        };
+
+        rust = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+        };
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
     userName = "Windwhisper";
@@ -34,27 +92,24 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    shellAliases = {
-      cat = "bat";
-      ls = "eza";
-    };
+    shellAliases = {cat = "bat";};
     history.size = 10000;
 
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "zsh-users/zsh-completions"; }
-        { name = "zsh-users/zsh-history-substring-search"; }
-        { name = "zdharma-continuum/fast-syntax-highlighting"; }
-        { name = "MichaelAquilina/zsh-you-should-use"; }
-        { name = "Aloxaf/fzf-tab"; }
-        { name = "jeffreytse/zsh-vi-mode"; }
+        {name = "zsh-users/zsh-autosuggestions";}
+        {name = "zsh-users/zsh-completions";}
+        {name = "zsh-users/zsh-history-substring-search";}
+        {name = "zdharma-continuum/fast-syntax-highlighting";}
+        {name = "MichaelAquilina/zsh-you-should-use";}
+        {name = "Aloxaf/fzf-tab";}
+        {name = "jeffreytse/zsh-vi-mode";}
       ];
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "eza" "fzf" ];
+      plugins = ["git" "eza" "fzf"];
       theme = "avit";
     };
   };
