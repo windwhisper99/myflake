@@ -15,16 +15,27 @@
     };
   };
 
-  outputs = { nixpkgs, nixos-wsl, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      packages.wallpapers = pkgs.stdenv.mkDerivation {
+        name = "my-wallpapers";
+        src = ././images;
+        installPhase = ''
+          mkdir -p $out
+          cp -r * $out
+        '';
+      };
+
       nixosConfigurations = {
         wsl = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
+            inherit self;
             mainUser = "liribell";
+            isDesktop = false;
           };
           system = system;
           modules = [
@@ -39,7 +50,9 @@
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
+            inherit self;
             mainUser = "liribell";
+            isDesktop = true;
           };
           system = system;
           modules = [

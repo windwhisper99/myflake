@@ -1,8 +1,8 @@
-{ pkgs, mainUser, inputs, ... }: {
+{ pkgs, mainUser, inputs, self, isDesktop, ... }: {
   users.users.${mainUser} = {
     isNormalUser = true;
     createHome = true;
-    home = "/home/liribell";
+    home = "/home/${mainUser}";
     initialPassword = "password";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
@@ -21,6 +21,11 @@
     useGlobalPkgs = true;
     useUserPackages = true;
 
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit self;
+      inherit isDesktop;
+    };
     users.${mainUser} = import ./home.nix;
   };
 }
