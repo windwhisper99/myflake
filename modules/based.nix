@@ -1,20 +1,26 @@
-{ pkgs, mainUser, ... }: {
+{ pkgs, mainUser, inputs, ... }: {
   users.users.${mainUser} = {
     isNormalUser = true;
     createHome = true;
     home = "/home/liribell";
     initialPassword = "password";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
 
+  nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   programs.zsh = { enable = true; };
 
   system.stateVersion = "24.11";
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.${mainUser} = import ./home.nix;
+  security.sudo.wheelNeedsPassword = false;
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+
+    users.${mainUser} = import ./home.nix;
+  };
 }

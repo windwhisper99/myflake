@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./nvim.nix ];
+  imports = [ ./nvim.nix ./hyprland.nix ];
 
   home.packages = with pkgs; [
     fastfetch
@@ -26,6 +26,11 @@
     rustup
     nodejs_22
     pnpm
+
+    # Application
+    vscode
+    brave
+    discord
   ];
 
   programs.git = {
