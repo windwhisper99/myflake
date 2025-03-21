@@ -15,9 +15,8 @@ in {
     "${secondaryMon}, preferred, 1920x0, auto"
   ];
   workspace = [
-    "name:primary, monitor:${primaryMon}, default:true"
-    "name:doc, monitor:${secondaryMon}"
-    "name:discord, monitor:${secondaryMon}, on-created-empty:[float] discord"
+    "1, monitor:${primaryMon}, default:true"
+    "2, monitor:${secondaryMon}"
   ];
 
   device = {

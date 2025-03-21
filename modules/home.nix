@@ -11,6 +11,7 @@
     nnn
     gh # Github CLI
     lazygit
+    pavucontrol
 
     # archives
     zip

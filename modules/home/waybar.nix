@@ -19,6 +19,7 @@ in {
         modules-right = [
           "tray"
           "custom/separator"
+          "pulseaudio"
           "clock"
           "custom/separator"
           "cpu"
@@ -50,12 +51,33 @@ in {
 
         clock = {format = " {:%I:%M %p   %a %d}";};
 
+        pulseaudio = {
+          format = "{icon} {volume}%";
+          format-bluetooth = "{icon} {volume}%";
+          format-muted = "";
+          format-icons = {
+            "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
+            "alsa_output.pci-0000_00_1f.3.analog-stereo-muted" = "";
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            phone-muted = "";
+            portable = "";
+            car = "";
+            default = ["" ""];
+          };
+          scroll-step = 1;
+          on-click = "pavucontrol";
+          ignored-sinks = ["Easy Effects Sink"];
+        };
+
         "hyprland/workspaces" = {
-          active-only = false;
-          disable-scroll = false;
+          active-only = true;
+          disable-scroll = true;
           all-outputs = false;
           on-click = "activate";
-          format = "{icon}";
+          format = "{icon} {name}";
           format-icons = {
             urgent = "";
             active = "";
