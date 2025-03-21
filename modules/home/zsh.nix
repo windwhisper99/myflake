@@ -26,7 +26,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "eza" "fzf"];
-      theme = "avit";
+      theme = "bira";
     };
   };
 
@@ -37,8 +37,11 @@
     baseIndex = 1;
     keyMode = "vi";
 
+    shortcut = "s";
+
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
+      pkgs.tmuxPlugins.gruvbox
     ];
   };
 }
