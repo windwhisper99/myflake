@@ -1,5 +1,10 @@
-{ config, pkgs, inputs, self, ... }:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  self,
+  ...
+}: let
   pkgs-unstable =
     inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
@@ -49,9 +54,8 @@ in {
 
   # Cachix for hyprland
   nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   services.greetd = {
@@ -78,7 +82,7 @@ in {
     package = pkgs-unstable.mesa;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
@@ -86,7 +90,7 @@ in {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [];
   fonts = {
     packages = with pkgs; [
       nerd-fonts.ubuntu-sans
@@ -105,5 +109,13 @@ in {
     ];
     enableDefaultPackages = true;
     fontDir.enable = true;
+  };
+
+  # Enable game
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
   };
 }
