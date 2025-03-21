@@ -1,11 +1,10 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.nixvim = {
-
     # Allows extra capabilities providied by nvim-cmp
-    plugins.cmp-nvim-lsp = { enable = true; };
+    plugins.cmp-nvim-lsp = {enable = true;};
 
     # Useful status updates for LSP
-    plugins.fidget = { enable = true; };
+    plugins.fidget = {enable = true;};
 
     plugins.lsp = {
       enable = true;
@@ -16,11 +15,12 @@
           installCargo = false;
           installRustc = false;
         };
-        ts_ls = { enable = true; };
+        ts_ls = {enable = true;};
+        clangd = {enable = true;};
 
         lua_ls = {
           enable = true;
-          settings = { completion = { callSnippet = "Replace"; }; };
+          settings = {completion = {callSnippet = "Replace";};};
         };
       };
 
@@ -40,43 +40,42 @@
             mode = "n";
             key = "gd";
             action.__raw = "require('telescope.builtin').lsp_definitions";
-            options = { desc = "LSP: [G]oto [D]efinition"; };
+            options = {desc = "LSP: [G]oto [D]efinition";};
           }
           # Find references for the word under cursor.
           {
             mode = "n";
             key = "gr";
             action.__raw = "require('telescope.builtin').lsp_references";
-            options = { desc = "LSP: [G]oto [R]eferences"; };
+            options = {desc = "LSP: [G]oto [R]eferences";};
           }
           # Jump to the implementation of the word under cursor.
           {
             mode = "n";
             key = "gI";
             action.__raw = "require('telescope.builtin').lsp_implementations";
-            options = { desc = "LSP: [G]oto [I]mplementation"; };
+            options = {desc = "LSP: [G]oto [I]mplementation";};
           }
           # Jump to the type of the word under cursor.
           {
             mode = "n";
             key = "<leader>D";
             action.__raw = "require('telescope.builtin').lsp_type_definitions";
-            options = { desc = "LSP: Type [D]efinition"; };
+            options = {desc = "LSP: Type [D]efinition";};
           }
           # Fuzzy find all the symbols in current document.
           {
             mode = "n";
             key = "<leader>ds";
             action.__raw = "require('telescope.builtin').lsp_document_symbols";
-            options = { desc = "LSP: [D]ocument [S]ymbols"; };
+            options = {desc = "LSP: [D]ocument [S]ymbols";};
           }
           # Fuzzy find all the symbols in current workspace.
           {
             mode = "n";
             key = "<leader>ws";
-            action.__raw =
-              "require('telescope.builtin').lsp_dynamic_workspace_symbols";
-            options = { desc = "LSP: [W]orkspace [S]ymbols"; };
+            action.__raw = "require('telescope.builtin').lsp_dynamic_workspace_symbols";
+            options = {desc = "LSP: [W]orkspace [S]ymbols";};
           }
         ];
 

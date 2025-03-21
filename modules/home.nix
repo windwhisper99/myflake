@@ -1,5 +1,11 @@
-{ config, inputs, pkgs, isDesktop, lib, ... }:
-let
+{
+  config,
+  inputs,
+  pkgs,
+  isDesktop,
+  lib,
+  ...
+}: let
   basePkgs = with pkgs; [
     fastfetch
     nnn
@@ -23,10 +29,12 @@ let
 
     # Development
     clang
+    clang-tools
     nodejs_22
     pnpm
     cargo
     rustc
+    just
   ];
   desktopPkgs = with pkgs; [
     # Desktop Application
@@ -35,11 +43,22 @@ let
     discord
   ];
 in {
-  imports = [ ./home/zsh.nix ./nvim/nixvim.nix ]
-    ++ (if isDesktop then [ ./home/hyprland.nix ] else [ ]);
+  imports =
+    [./home/zsh.nix ./nvim/nixvim.nix]
+    ++ (
+      if isDesktop
+      then [./home/hyprland.nix]
+      else []
+    );
 
-  home.packages = basePkgs ++ (if isDesktop then desktopPkgs else [ ]);
-  home.sessionVariables = { TERMINAL = "kitty"; };
+  home.packages =
+    basePkgs
+    ++ (
+      if isDesktop
+      then desktopPkgs
+      else []
+    );
+  home.sessionVariables = {TERMINAL = "kitty";};
 
   fonts.fontconfig.enable = true;
 

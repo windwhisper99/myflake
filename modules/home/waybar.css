@@ -1,16 +1,17 @@
 * {
-    border: none;
-    border-radius: 0px;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    background-color: transparent;
-    color: #f4d9e1;
+  border: none;
+  border-radius: 0px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  background-color: transparent;
+  color: #f4d9e1;
 }
 
 #memory,
 #cpu {
-    padding-left: 4px;
-    padding-right: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
+

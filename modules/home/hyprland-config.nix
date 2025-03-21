@@ -9,7 +9,7 @@ in {
   inherit secondaryMon;
 
   # List of monitors
-  monitors = [ primaryMon secondaryMon ];
+  monitors = [primaryMon secondaryMon];
   monitor = [
     "${primaryMon}, preferred, 0x0, auto"
     "${secondaryMon}, preferred, 1920x0, auto"

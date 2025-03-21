@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   programs.nixvim = {
     plugins.cmp = {
       enable = true;
@@ -51,16 +50,15 @@
           '';
         };
 
-        completion = { completeopt = "menu,menuone,noinsert"; };
+        completion = {completeopt = "menu,menuone,noinsert";};
         sources = [
-          { name = "luasnip"; }
-          { name = "nvim_lsp"; }
-          { name = "path"; }
-          { name = "emoji"; }
-          { name = "calc"; }
+          {name = "luasnip";}
+          {name = "nvim_lsp";}
+          {name = "path";}
+          {name = "emoji";}
+          {name = "calc";}
         ];
       };
     };
   };
-
 }

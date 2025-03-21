@@ -1,7 +1,11 @@
-{ pkgs, self, ... }:
-let hyprland-config = import ./hyprland-config.nix;
+{
+  pkgs,
+  self,
+  ...
+}: let
+  hyprland-config = import ./hyprland-config.nix;
 in {
-  imports = [ ./waybar.nix ./rofi.nix ./kitty.nix ];
+  imports = [./waybar.nix ./rofi.nix ./kitty.nix];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -15,7 +19,7 @@ in {
 
       "$mod" = "SUPER";
 
-      exec-once = [ "waybar" "hyprpaper" ];
+      exec-once = ["waybar" "hyprpaper"];
 
       monitor = hyprland-config.monitor;
       device = hyprland-config.device;
@@ -43,7 +47,7 @@ in {
         pseudotile = true;
         preserve_split = true;
       };
-      master = { new_status = "master"; };
+      master = {new_status = "master";};
 
       animations = {
         enabled = true;
@@ -74,7 +78,6 @@ in {
           "workspacesIn, 1, 1.21, almostLinear, fade"
           "workspacesOut, 1, 1.94, almostLinear, fade"
         ];
-
       };
 
       decoration = {
@@ -95,10 +98,10 @@ in {
         };
       };
 
-      layerrule = [ "blur,waybar" "blur,rofi" ];
+      layerrule = ["blur,waybar" "blur,rofi"];
 
       bind = [
-        # Application 
+        # Application
         "$mod, Q, exec, $terminal"
         "$mod, C, killactive,"
         "$mod, R, exec, $runmenu"
@@ -111,7 +114,7 @@ in {
         # Lock screen
         "$mod SHIFT, L, exec, hyprlock"
 
-        # Move focus 
+        # Move focus
         "$mod, H, movefocus, l"
         "$mod, L, movefocus, r"
         "$mod, K, movefocus, u"
@@ -139,7 +142,7 @@ in {
         "$mod SHIFT, 8, movetoworkspace, 8"
         "$mod SHIFT, 9, movetoworkspace, 9"
       ];
-      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
+      bindm = ["$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow"];
 
       windowrule = [
         "suppressevent maximize, class:.*"
@@ -210,28 +213,28 @@ in {
         font_color = "rgb(200,200,200)";
         fade_on_empty = false;
         font_family = "SF Pro Display Bold";
-        placeholder_text =
-          ''<i><span foreground="##ffffff99">Enter Pass</span></i>'';
+        placeholder_text = ''<i><span foreground="##ffffff99">Enter Pass</span></i>'';
         hide_input = false;
         position = "0, -100";
         halign = "center";
         valign = "center";
       };
     };
-
   };
 
   # Screen idle
   services.hypridle = {
     enable = true;
     settings = {
-      general = { lock_cmd = "pidof hyprlock || hyprlock"; };
+      general = {lock_cmd = "pidof hyprlock || hyprlock";};
 
       # Lock screen on 5 mins
-      listener = [{
-        timeout = 300;
-        on-timeout = "loginctl lock-session";
-      }];
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = "loginctl lock-session";
+        }
+      ];
     };
   };
 
@@ -242,9 +245,8 @@ in {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      preload = [ "${self.packages.wallpapers}/cat.png" ];
-      wallpaper = [ ",${self.packages.wallpapers}/cat.png" ];
+      preload = ["${self.packages.wallpapers}/cat.png"];
+      wallpaper = [",${self.packages.wallpapers}/cat.png"];
     };
   };
 }
-

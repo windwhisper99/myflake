@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-let config = import ./hyprland-config.nix;
+{pkgs, ...}: let
+  config = import ./hyprland-config.nix;
 in {
   programs.waybar = {
     enable = true;
@@ -14,8 +14,8 @@ in {
         margin-left = 0;
         margin-right = 0;
 
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "hyprland/window" ];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["hyprland/window"];
         modules-right = [
           "tray"
           "custom/separator"
@@ -26,8 +26,8 @@ in {
           "custom/space"
         ];
 
-        "custom/separator" = { format = "{} ┃ {}"; };
-        "custom/space" = { format = "{} "; };
+        "custom/separator" = {format = "{} ┃ {}";};
+        "custom/space" = {format = "{} ";};
 
         cpu = {
           tooltip = false;
@@ -48,7 +48,7 @@ in {
           spacing = 6;
         };
 
-        clock = { format = " {:%I:%M %p   %a %d}"; };
+        clock = {format = " {:%I:%M %p   %a %d}";};
 
         "hyprland/workspaces" = {
           active-only = false;

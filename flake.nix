@@ -20,54 +20,60 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, nixvim, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      packages.wallpapers = pkgs.stdenv.mkDerivation {
-        name = "my-wallpapers";
-        src = ././images;
-        installPhase = ''
-          mkdir -p $out
-          cp -r * $out
-        '';
+  outputs = {
+    self,
+    nixpkgs,
+    nixos-wsl,
+    home-manager,
+    nixvim,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    packages.wallpapers = pkgs.stdenv.mkDerivation {
+      name = "my-wallpapers";
+      src = ././images;
+      installPhase = ''
+        mkdir -p $out
+        cp -r * $out
+      '';
+    };
+
+    nixosConfigurations = {
+      wsl = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          inherit self;
+          inherit nixvim;
+          mainUser = "liribell";
+          isDesktop = false;
+        };
+        system = system;
+        modules = [
+          nixos-wsl.nixosModules.default
+          ./modules/wsl.nix
+          home-manager.nixosModules.home-manager
+          ./modules/based.nix
+        ];
       };
 
-      nixosConfigurations = {
-        wsl = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            inherit self;
-            inherit nixvim;
-            mainUser = "liribell";
-            isDesktop = false;
-          };
-          system = system;
-          modules = [
-            nixos-wsl.nixosModules.default
-            ./modules/wsl.nix
-            home-manager.nixosModules.home-manager
-            ./modules/based.nix
-          ];
+      nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          inherit self;
+          inherit nixvim;
+          mainUser = "liribell";
+          isDesktop = true;
         };
-
-        nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-            inherit self;
-            inherit nixvim;
-            mainUser = "liribell";
-            isDesktop = true;
-          };
-          system = system;
-          modules = [
-            ./hardware-configuration.nix
-            home-manager.nixosModules.home-manager
-            ./modules/based.nix
-            ./modules/nixos.nix
-          ];
-        };
+        system = system;
+        modules = [
+          ./hardware-configuration.nix
+          home-manager.nixosModules.home-manager
+          ./modules/based.nix
+          ./modules/nixos.nix
+        ];
       };
     };
+  };
 }

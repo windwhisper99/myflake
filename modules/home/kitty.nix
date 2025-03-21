@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # Terminal
   programs.kitty = {
     enable = true;
@@ -14,7 +14,7 @@
 
       font_size = 11.0;
       sync_to_monitor = true;
-      window_padding_width = 14;
+      window_padding_width = 8;
 
       cursor = "#928374";
       cursor_text_color = "background";

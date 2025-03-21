@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins.treesitter = {
-
       enable = true;
 
       settings = {
@@ -14,10 +13,9 @@
 
         indent = {
           enable = true;
-          disable = [ "ruby" ];
+          disable = ["ruby"];
         };
       };
-
     };
   };
 }

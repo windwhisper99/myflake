@@ -1,4 +1,8 @@
-{ pkgs, nixvim, ... }: {
+{
+  pkgs,
+  nixvim,
+  ...
+}: {
   imports = [
     nixvim.homeManagerModules.nixvim
 
@@ -8,6 +12,7 @@
     ./treesitter.nix
     ./conform.nix
     ./mini.nix
+    ./neotest.nix
   ];
 
   programs.nixvim = {
@@ -84,6 +89,45 @@
         key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
       }
+
+      # Window creation
+      {
+        mode = "n";
+        key = "<leader>|";
+        action = "<C-w>v";
+      }
+      {
+        mode = "n";
+        key = "<leader>-";
+        action = "<C-w>s";
+      }
+      # Delete window
+      {
+        mode = "n";
+        key = "<leader>wd";
+        action = "<C-w>c";
+      }
+      # Windows navigator
+      {
+        mode = "n";
+        key = "<C-j>";
+        action = "<C-w>j";
+      }
+      {
+        mode = "n";
+        key = "<C-k>";
+        action = "<C-w>k";
+      }
+      {
+        mode = "n";
+        key = "<C-h>";
+        action = "<C-w>h";
+      }
+      {
+        mode = "n";
+        key = "<C-l>";
+        action = "<C-w>l";
+      }
     ];
 
     plugins = {
@@ -91,7 +135,7 @@
       web-devicons.enable = true;
 
       # Detect tabstop and shiftwidth automatically
-      sleuth = { enable = true; };
+      sleuth = {enable = true;};
 
       # Highlight todo, notes, etc in comments
       todo-comments = {
@@ -106,31 +150,32 @@
         settings.enabled = true;
       };
 
-      emmet = { enable = true; };
+      emmet = {enable = true;};
 
-      indent-blankline = { enable = true; };
+      indent-blankline = {enable = true;};
 
-      harpoon = { enable = true; };
+      harpoon = {enable = true;};
 
       gitsigns = {
         enable = true;
         settings = {
           signs = {
-            add = { text = "+"; };
-            change = { text = "~"; };
-            delete = { text = "_"; };
-            topdelete = { text = "‾"; };
-            changedelete = { text = "~"; };
+            add = {text = "+";};
+            change = {text = "~";};
+            delete = {text = "_";};
+            topdelete = {text = "‾";};
+            changedelete = {text = "~";};
           };
         };
       };
+
+      tmux-navigator = {enable = true;};
     };
 
-    extraPlugins = with pkgs.vimPlugins;
-      [
-        # Useful for getting pretty icons, but requires a Nerd Font.
-        nvim-web-devicons
-      ];
+    extraPlugins = with pkgs.vimPlugins; [
+      # Useful for getting pretty icons, but requires a Nerd Font.
+      nvim-web-devicons
+    ];
 
     extraConfigLuaPre = ''
       if vim.g.have_nerd_font then

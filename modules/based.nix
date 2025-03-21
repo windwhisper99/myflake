@@ -1,17 +1,25 @@
-{ pkgs, mainUser, inputs, self, isDesktop, nixvim, ... }: {
+{
+  pkgs,
+  mainUser,
+  inputs,
+  self,
+  isDesktop,
+  nixvim,
+  ...
+}: {
   users.users.${mainUser} = {
     isNormalUser = true;
     createHome = true;
     home = "/home/${mainUser}";
     initialPassword = "password";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  programs.zsh = { enable = true; };
+  programs.zsh = {enable = true;};
 
   system.stateVersion = "24.11";
 
