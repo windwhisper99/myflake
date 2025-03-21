@@ -1,4 +1,4 @@
-{ pkgs, mainUser, inputs, self, isDesktop, ... }: {
+{ pkgs, mainUser, inputs, self, isDesktop, nixvim, ... }: {
   users.users.${mainUser} = {
     isNormalUser = true;
     createHome = true;
@@ -25,6 +25,7 @@
       inherit inputs;
       inherit self;
       inherit isDesktop;
+      inherit nixvim;
     };
     users.${mainUser} = import ./home.nix;
   };

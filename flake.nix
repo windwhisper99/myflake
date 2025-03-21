@@ -13,9 +13,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, nixvim, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -34,6 +39,7 @@
           specialArgs = {
             inherit inputs;
             inherit self;
+            inherit nixvim;
             mainUser = "liribell";
             isDesktop = false;
           };
@@ -41,7 +47,6 @@
           modules = [
             nixos-wsl.nixosModules.default
             ./modules/wsl.nix
-
             home-manager.nixosModules.home-manager
             ./modules/based.nix
           ];
@@ -51,6 +56,7 @@
           specialArgs = {
             inherit inputs;
             inherit self;
+            inherit nixvim;
             mainUser = "liribell";
             isDesktop = true;
           };

@@ -4,6 +4,7 @@ let
     fastfetch
     nnn
     gh # Github CLI
+    lazygit
 
     # archives
     zip
@@ -22,9 +23,10 @@ let
 
     # Development
     clang
-    rustup
     nodejs_22
     pnpm
+    cargo
+    rustc
   ];
   desktopPkgs = with pkgs; [
     # Desktop Application
@@ -33,10 +35,13 @@ let
     discord
   ];
 in {
-  imports = [ ./home/nvim.nix ./home/zsh.nix ]
-    ++ (if isDesktop then [ ./home/hyprland.nix ./home/neovide.nix ] else [ ]);
+  imports = [ ./home/zsh.nix ./nvim/nixvim.nix ]
+    ++ (if isDesktop then [ ./home/hyprland.nix ] else [ ]);
 
   home.packages = basePkgs ++ (if isDesktop then desktopPkgs else [ ]);
+  home.sessionVariables = { TERMINAL = "kitty"; };
+
+  fonts.fontconfig.enable = true;
 
   programs.git = {
     enable = true;
