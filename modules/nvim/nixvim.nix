@@ -1,10 +1,10 @@
 {
   pkgs,
-  nixvim,
+  inputs,
   ...
 }: {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
 
     ./cmp.nix
     ./lsp.nix

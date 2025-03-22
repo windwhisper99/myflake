@@ -4,6 +4,7 @@
   pkgs,
   isDesktop,
   lib,
+  system,
   ...
 }: let
   basePkgs = with pkgs; [
@@ -42,6 +43,8 @@
     vscode
     brave
     discord
+
+    inputs.zen-browser.packages.${system}.default
   ];
 in {
   imports =

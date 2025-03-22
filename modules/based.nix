@@ -2,9 +2,9 @@
   pkgs,
   mainUser,
   inputs,
+  system,
   self,
   isDesktop,
-  nixvim,
   ...
 }: {
   users.users.${mainUser} = {
@@ -32,8 +32,8 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit self;
+      inherit system;
       inherit isDesktop;
-      inherit nixvim;
     };
     users.${mainUser} = import ./home.nix;
   };

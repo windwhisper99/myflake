@@ -36,6 +36,11 @@ in {
         resize_on_border = true;
       };
 
+      render = {
+        explicit_sync = 0;
+        explicit_sync_kms = 0;
+      };
+
       group = {
         "col.border_active" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
         "col.border_inactive" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";

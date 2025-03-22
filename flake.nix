@@ -18,6 +18,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -25,7 +29,6 @@
     nixpkgs,
     nixos-wsl,
     home-manager,
-    nixvim,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -44,8 +47,8 @@
       wsl = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
+          inherit system;
           inherit self;
-          inherit nixvim;
           mainUser = "liribell";
           isDesktop = false;
         };
@@ -61,8 +64,8 @@
       nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
+          inherit system;
           inherit self;
-          inherit nixvim;
           mainUser = "liribell";
           isDesktop = true;
         };
