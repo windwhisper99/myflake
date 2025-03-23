@@ -16,7 +16,10 @@
           installRustc = false;
         };
         ts_ls = {enable = true;};
+        cssls = {enable = true;};
+        emmet_ls = {enable = true;};
         clangd = {enable = true;};
+        html = {enable = true;};
 
         lua_ls = {
           enable = true;

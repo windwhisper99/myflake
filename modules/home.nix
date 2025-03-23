@@ -43,6 +43,7 @@
     vscode
     brave
     discord
+    rnote # White board application
 
     inputs.zen-browser.packages.${system}.default
   ];

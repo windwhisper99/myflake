@@ -170,6 +170,10 @@
       };
 
       tmux-navigator = {enable = true;};
+
+      # Copilot
+      copilot-chat = {enable = true;};
+      copilot-cmp = {enable = true;};
     };
 
     extraPlugins = with pkgs.vimPlugins; [

@@ -52,6 +52,7 @@
 
         completion = {completeopt = "menu,menuone,noinsert";};
         sources = [
+          {name = "copilot";}
           {name = "luasnip";}
           {name = "nvim_lsp";}
           {name = "path";}
