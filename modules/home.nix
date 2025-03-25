@@ -28,6 +28,8 @@
     bat # cat alternative
     eza # ls alternative
     fzf
+    octave
+    blender
 
     # Development
     clang
@@ -36,6 +38,7 @@
     pnpm
     cargo
     rustc
+    clippy
     just
   ];
   desktopPkgs = with pkgs; [
@@ -55,6 +58,20 @@ in {
       then [./home/hyprland.nix]
       else []
     );
+
+  i18n.inputMethod =
+    if isDesktop
+    then {
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-bamboo
+        catppuccin-fcitx5
+      ];
+    }
+    else {
+      enabled = null;
+    };
 
   home.packages =
     basePkgs

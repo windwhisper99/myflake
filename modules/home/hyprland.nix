@@ -19,7 +19,7 @@ in {
 
       "$mod" = "SUPER";
 
-      exec-once = ["waybar" "hyprpaper"];
+      exec-once = ["waybar" "hyprpaper" "fcitx5-remote -r" "fcitx5 -d --replace &" "fcitx5-remote -r"];
 
       monitor = hyprland-config.monitor;
       device = hyprland-config.device;
@@ -39,6 +39,11 @@ in {
       render = {
         explicit_sync = 0;
         explicit_sync_kms = 0;
+      };
+
+      input = {
+        kb_layout = "us,vn";
+        kb_options = "grp:alt_shift_toggle";
       };
 
       group = {
@@ -109,8 +114,8 @@ in {
         # Application
         "$mod, Q, exec, $terminal"
         "$mod, C, killactive,"
-        "$mod, R, exec, $runmenu"
-        "$mod, A, exec, $appmenu"
+        # "$mod, R, exec, $runmenu"
+        "$mod, R, exec, $appmenu"
         "$mod, W, exec, $winmenu"
         "$mod, M, exit,"
         "$mod, V, toggleFloating,"
@@ -118,6 +123,7 @@ in {
         "$mod SHIFT, S, exec, $screenshot-region"
         # Lock screen
         "$mod SHIFT, L, exec, hyprlock"
+        "$mod CTRL, space, execr, fcitx5-remote -t"
 
         # Move focus
         "$mod, H, movefocus, l"
