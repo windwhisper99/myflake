@@ -34,12 +34,6 @@ in {
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us,vi";
-    variant = "";
-  };
-
   programs.hyprland = {
     enable = true;
     # set the flake package

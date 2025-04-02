@@ -115,7 +115,7 @@ in {
         "$mod, Q, exec, $terminal"
         "$mod, C, killactive,"
         # "$mod, R, exec, $runmenu"
-        "$mod, R, exec, $appmenu"
+        "$mod, space, exec, $appmenu"
         "$mod, W, exec, $winmenu"
         "$mod, M, exit,"
         "$mod, V, toggleFloating,"

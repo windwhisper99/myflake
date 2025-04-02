@@ -46,8 +46,9 @@
     vscode
     brave
     discord
-    rnote # White board application
-
+    blender
+    inkscape
+    kdePackages.dolphin
     inputs.zen-browser.packages.${system}.default
   ];
 in {
@@ -80,7 +81,9 @@ in {
       then desktopPkgs
       else []
     );
-  home.sessionVariables = {TERMINAL = "kitty";};
+  home.sessionVariables = {
+    TERMINAL = "kitty";
+  };
 
   fonts.fontconfig.enable = true;
 

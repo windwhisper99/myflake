@@ -19,6 +19,12 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # A lot of stuff need this
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };
+
   programs.zsh = {enable = true;};
 
   system.stateVersion = "24.11";
