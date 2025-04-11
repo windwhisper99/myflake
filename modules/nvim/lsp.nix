@@ -20,6 +20,7 @@
         emmet_ls = {enable = true;};
         clangd = {enable = true;};
         html = {enable = true;};
+        tailwindcss = {enable = true;};
 
         lua_ls = {
           enable = true;

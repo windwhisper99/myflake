@@ -31,13 +31,32 @@
             }
           end
         '';
+        ft_parsers = {
+          javascript = "babel";
+          javascriptreact = "babel";
+          typescript = "typescript";
+          typescriptreact = "typescript";
+          vue = "vue";
+          css = "css";
+          scss = "scss";
+          less = "less";
+          html = "html";
+          json = "json";
+          jsonc = "json";
+          yaml = "yaml";
+          markdown = "markdown";
+          graphql = "graphql";
+          handlebars = "glimmer";
+        };
         formatters_by_ft = {
           nix = ["alejandra"];
           lua = ["stylua"];
           rust = ["rustfmt"];
 
           javascript = ["prettierd"];
+          javascriptreact = ["prettierd"];
           typescript = ["prettierd"];
+          typescriptreact = ["prettierd"];
           html = ["prettierd"];
           css = ["prettierd"];
           json = ["prettierd"];
