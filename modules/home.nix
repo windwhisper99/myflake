@@ -9,9 +9,9 @@
 }: let
   basePkgs = with pkgs; [
     fastfetch
-    nnn
     gh # Github CLI
     lazygit
+    tig # Git TUI
     pavucontrol
 
     # archives
@@ -29,7 +29,6 @@
     eza # ls alternative
     fzf
     octave
-    blender
 
     # Development
     clang
@@ -48,8 +47,15 @@
     discord
     blender
     inkscape
+    gimp
     kdePackages.dolphin
     inputs.zen-browser.packages.${system}.default
+    libreoffice
+
+    vimiv-qt # Image viewers
+    imv # Image viewers
+    mpv # Video player
+    vlc # Video player
   ];
 in {
   imports =
@@ -85,12 +91,45 @@ in {
     TERMINAL = "kitty";
   };
 
+  xdg = {
+    mimeApps = {
+      enable = false;
+      defaultApplications = {
+        "text/plain" = "nvim.desktop";
+        "image/png" = "imv.desktop";
+        "image/jpeg" = "imv.desktop";
+        "image/jpg" = "imv.desktop";
+        "image/gif" = "imv.desktop";
+        "image/webp" = "imv.desktop";
+        "image/svg+xml" = "imv.desktop";
+
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
+        "video/webm" = "mpv.desktop";
+        "video/quicktime" = "mpv.desktop"; # For .mov filessktop";
+
+        "application/pdf" = "zathura.desktop";
+      };
+    };
+  };
+
   fonts.fontconfig.enable = true;
 
   programs.git = {
     enable = true;
     userName = "Windwhisper";
     userEmail = "15071144+windwhisper99@users.noreply.github.com";
+  };
+
+  programs.lf = {
+    enable = true;
+
+    settings = {
+      preview = true;
+      drawbox = true;
+      icons = true;
+      ignorecase = true;
+    };
   };
 
   home.stateVersion = "24.11";

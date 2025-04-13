@@ -108,7 +108,7 @@ in {
         };
       };
 
-      layerrule = ["blur,waybar" "blur,rofi"];
+      # layerrule = ["blur,waybar" "blur,rofi"];
 
       bind = [
         # Application
