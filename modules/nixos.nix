@@ -11,10 +11,15 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "lirios";
+  hardware.enableAllFirmware = true;
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "lirios";
+    networkmanager.enable = true;
+
+    firewall.allowedTCPPorts = [3000];
+  };
 
   # Time zone.
   time.timeZone = "Asia/Tokyo";

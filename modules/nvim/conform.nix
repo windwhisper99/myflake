@@ -19,6 +19,9 @@
 
       settings = {
         notify_on_error = false;
+
+        default_format_opts.lsp_format = "prefer";
+
         format_on_save = ''
           function(bufnr)
             -- Disable "format_on_save lsp_fallback" for lanuages that don't
@@ -49,6 +52,8 @@
           handlebars = "glimmer";
         };
         formatters_by_ft = {
+          markdown = ["prettierd"];
+
           nix = ["alejandra"];
           lua = ["stylua"];
           rust = ["rustfmt"];

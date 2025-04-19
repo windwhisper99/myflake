@@ -29,6 +29,8 @@
     eza # ls alternative
     fzf
     octave
+    ffmpeg # Video converter
+    imagemagick # Image converter
 
     # Development
     clang
@@ -37,8 +39,14 @@
     pnpm
     cargo
     rustc
+    zig
     clippy
     just
+
+    obsidian
+
+    # Games
+    solitaire-tui
   ];
   desktopPkgs = with pkgs; [
     # Desktop Application

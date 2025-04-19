@@ -39,6 +39,8 @@
 
     shortcut = "s";
 
+    extraConfig = "set -gq allow-passthrough on\nset -g visual-activity off";
+
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
       pkgs.tmuxPlugins.gruvbox

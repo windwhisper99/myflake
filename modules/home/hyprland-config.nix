@@ -1,7 +1,7 @@
 # This store devices specific config
 let
-  primaryMon = "DP-4";
-  secondaryMon = "DP-3";
+  primaryMon = "DP-3";
+  secondaryMon = "DP-4";
 
   mice = "razer-razer-basilisk-v3";
 in {

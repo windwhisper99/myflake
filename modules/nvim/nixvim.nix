@@ -174,6 +174,49 @@
       # Copilot
       copilot-chat = {enable = true;};
       copilot-cmp = {enable = true;};
+
+      ts-autotag = {enable = true;};
+      ts-comments = {enable = true;};
+      ts-context-commentstring = {enable = true;};
+
+      # obsidian = {enable = true;};
+
+      image = {
+        enable = true;
+        settings = {
+          backend = "kitty";
+          # max_height = 12;
+          # max_height_window_percentage = {
+          #   __raw = "math.huge";
+          # };
+          max_height_window_percentage = 50;
+          # max_width = 100;
+          # max_width_window_percentage = {
+          #   __raw = "math.huge";
+          # };
+          window_overlap_clear_enabled = false;
+          window_overlap_clear_ft_ignore = [
+            "cmp_menu"
+            "cmp_docs"
+          ];
+          editor_only_render_when_focused = false;
+          tmux_show_only_in_active_window = false;
+          hijack_file_patterns = ["*.png" "*.jpg" "*.jpeg" "*.gif" "*.webp" "*.avif"]; # render image files as images when opened
+
+          markdown = {
+            enabled = true;
+            filetypes = ["markdown" "vimwiki"];
+          };
+          neorg = {
+            enabled = true;
+            filetypes = ["norg"];
+          };
+          typst = {
+            enabled = true;
+            filetypes = ["typst"];
+          };
+        };
+      };
     };
 
     extraPlugins = with pkgs.vimPlugins; [

@@ -15,7 +15,7 @@ in {
         margin-right = 0;
 
         modules-left = ["hyprland/workspaces"];
-        modules-center = ["hyprland/window"];
+        # modules-center = ["hyprland/window"];
         modules-right = [
           "tray"
           "custom/separator"
