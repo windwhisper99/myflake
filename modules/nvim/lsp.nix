@@ -22,6 +22,8 @@
         html = {enable = true;};
         tailwindcss = {enable = true;};
 
+        zls = {enable = true;};
+
         lua_ls = {
           enable = true;
           settings = {completion = {callSnippet = "Replace";};};
