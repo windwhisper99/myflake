@@ -45,6 +45,7 @@
 
       shiftwidth = 4;
       tabstop = 4;
+      conceallevel = 1;
 
       mouse = "a";
       showmode = false;
@@ -178,8 +179,6 @@
       ts-autotag = {enable = true;};
       ts-comments = {enable = true;};
       ts-context-commentstring = {enable = true;};
-
-      # obsidian = {enable = true;};
 
       image = {
         enable = true;
