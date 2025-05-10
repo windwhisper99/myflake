@@ -22,6 +22,10 @@
         html = {enable = true;};
         tailwindcss = {enable = true;};
 
+        # Vue support
+        volar = {enable = true;};
+
+        # Zig support
         zls = {enable = true;};
 
         lua_ls = {

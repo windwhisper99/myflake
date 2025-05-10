@@ -13,6 +13,7 @@
     lazygit
     tig # Git TUI
     pavucontrol
+    awscli2
 
     # archives
     zip
