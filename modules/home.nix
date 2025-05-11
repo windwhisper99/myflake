@@ -128,6 +128,10 @@ in {
     enable = true;
     userName = "Windwhisper";
     userEmail = "15071144+windwhisper99@users.noreply.github.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   programs.lf = {
