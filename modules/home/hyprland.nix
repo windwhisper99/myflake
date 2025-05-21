@@ -155,6 +155,11 @@ in {
       ];
       bindm = ["$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow"];
 
+      binde = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ];
+
       windowrule = [
         "suppressevent maximize, class:.*"
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
@@ -169,6 +174,11 @@ in {
     alsa-utils
 
     hyprshot # Screenshot
+
+    # File manager
+    nemo-with-extensions
+    adwaita-icon-theme
+    dconf
 
     self.packages.wallpapers
   ];

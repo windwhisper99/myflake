@@ -57,9 +57,15 @@
     blender
     inkscape
     gimp
-    kdePackages.dolphin
     inputs.zen-browser.packages.${system}.default
     libreoffice
+
+    bluetui
+
+
+    prusa-slicer
+    openscad
+    freecad
 
     vimiv-qt # Image viewers
     imv # Image viewers
@@ -98,11 +104,18 @@ in {
     );
   home.sessionVariables = {
     TERMINAL = "kitty";
+    GTK_THEME = "gruvbox-dark";
   };
 
   xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      config.common.default = "";
+    };
+
     mimeApps = {
-      enable = false;
+      enable = true;
       defaultApplications = {
         "text/plain" = "nvim.desktop";
         "image/png" = "imv.desktop";
@@ -121,6 +134,9 @@ in {
       };
     };
   };
+
+  # Make sure Nautilus integration works
+  services.gnome-keyring.enable = true;
 
   fonts.fontconfig.enable = true;
 
@@ -144,6 +160,26 @@ in {
       ignorecase = true;
     };
   };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "gruvbox-dark";
+      package = pkgs.gruvbox-dark-gtk;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+  };
+  dconf.enable = true;
 
   home.stateVersion = "24.11";
 }

@@ -13,6 +13,12 @@ in {
 
   hardware.enableAllFirmware = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+
   # Enable networking
   networking = {
     hostName = "lirios";
@@ -108,6 +114,15 @@ in {
     ];
     enableDefaultPackages = true;
     fontDir.enable = true;
+  };
+
+  services = {
+    udisks2.enable = true; # For automouting removable disk
+    gvfs.enable = true; # For virtual filesystem and trash
+  };
+
+  security = {
+    polkit.enable = true; # Authentication for mounting
   };
 
   # Enable game
