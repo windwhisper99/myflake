@@ -3,53 +3,33 @@
 in {
   programs.waybar = {
     enable = true;
-    # style = builtins.readFile ./waybar.css;
+    style = builtins.readFile ./waybar.css;
     settings = {
       main-bar = {
         layer = "top";
         position = "top";
-        height = 16;
-        margin-top = 0;
-        margin-bottom = 0;
-        margin-left = 0;
-        margin-right = 0;
 
         modules-left = ["hyprland/workspaces"];
-        # modules-center = ["hyprland/window"];
+        modules-center = ["custom/music"];
         modules-right = [
-          "tray"
-          "custom/separator"
           "pulseaudio"
           "clock"
-          "custom/separator"
-          "cpu"
-          "memory"
-          "custom/space"
+
+          "tray"
+
+          "custom/power"
         ];
 
-        "custom/separator" = {format = "{} ┃ {}";};
-        "custom/space" = {format = "{} ";};
-
-        cpu = {
-          tooltip = false;
-          format = "󰻠 {usage}%";
-          format-alt = "󰻠 {avg_frequency} GHz";
-          interval = 5;
-        };
-
-        memory = {
-          tooltip = false;
-          format = "󰍛 {}%";
-          format-alt = "󰍛 {used}/{total} GiB";
-          interval = 5;
-        };
-
         tray = {
-          icon-size = 17;
-          spacing = 6;
+          icon-size = 20;
+          spacing = 10;
         };
 
-        clock = {format = " {:%I:%M %p   %a %d}";};
+        clock = {
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format-alt = " {:%d/%m/%Y}";
+          format = " {:%H:%M}";
+        };
 
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -73,17 +53,27 @@ in {
         };
 
         "hyprland/workspaces" = {
-          active-only = true;
           disable-scroll = true;
-          all-outputs = false;
-          on-click = "activate";
-          format = "{icon} {name}";
+          format = " {name} ";
           format-icons = {
-            urgent = "";
-            active = "";
-            default = "󰧞";
-            sort-by-number = true;
+            default = "";
           };
+        };
+
+        "custom/music" = {
+          format = " {}";
+          escape = true;
+          interval = 5;
+          tooltip = false;
+          exec = "playerctl metadata --format='{{title}}'";
+          on-click = "playerctl play-pause";
+          max-length = 50;
+        };
+
+        "custom/power" = {
+          tooltip = false;
+          on-click = "rofi -show power";
+          format = "⏻";
         };
       };
     };

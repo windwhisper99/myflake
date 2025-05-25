@@ -27,7 +27,6 @@
   };
 
   programs.fish = {enable = true;};
-  # programs.zsh = {enable = true;};
 
   system.stateVersion = "24.11";
 

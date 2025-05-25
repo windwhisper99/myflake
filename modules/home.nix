@@ -11,7 +11,8 @@
   basePkgs = with pkgs; [
     fastfetch
     gh # Github CLI
-    lazygit
+    gitui
+    gh-dash
     tig # Git TUI
     pavucontrol
     awscli2
@@ -33,6 +34,7 @@
     octave
     ffmpeg # Video converter
     imagemagick # Image converter
+    btop
 
     # Development
     clang
@@ -54,7 +56,10 @@
     # Desktop Application
     vscode
     brave
+
     discord
+    betterdiscordctl
+
     blender
     inkscape
     gimp
@@ -111,7 +116,7 @@ in {
     flavor = "mocha";
 
     gtk.enable = true;
-    chromium.enable = true;
+    cursors.enable = true;
   };
 
   home.packages =
@@ -181,11 +186,24 @@ in {
 
   gtk = {
     enable = true;
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
+
+    gtk2.extraConfig = ''
+      gtk-application-prefer-dark-theme" = 1
+    '';
+    gtk3.extraConfig = {
+      "gtk-application-prefer-dark-theme" = 1;
+    };
+    gtk4.extraConfig = {
+      "gtk-application-prefer-dark-theme" = 1;
+    };
   };
+
+  services.playerctld.enable = true;
 
   dconf.enable = true;
 

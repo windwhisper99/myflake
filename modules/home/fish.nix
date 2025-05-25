@@ -1,6 +1,20 @@
 {pkgs, ...}: {
   programs.fish = {
     enable = true;
+    functions = {
+      fish_user_key_bindings = "fish_vi_key_bindings";
+      fish_greeting = ''
+      '';
+    };
+
+    shellAbbrs = {q = "exit";};
+
+    plugins = [
+      {
+        name = "plugin-git";
+        src = pkgs.fishPlugins.plugin-git.src;
+      }
+    ];
   };
 
   programs.starship = {
