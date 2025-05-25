@@ -22,6 +22,8 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -29,6 +31,7 @@
     nixpkgs,
     nixos-wsl,
     home-manager,
+    catppuccin,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -66,12 +69,14 @@
           inherit inputs;
           inherit system;
           inherit self;
+          inherit catppuccin;
           mainUser = "liribell";
           isDesktop = true;
         };
         system = system;
         modules = [
           ./hardware-configuration.nix
+          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           ./modules/based.nix
           ./modules/nixos.nix

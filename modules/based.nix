@@ -5,6 +5,7 @@
   system,
   self,
   isDesktop,
+  catppuccin,
   ...
 }: {
   users.users.${mainUser} = {
@@ -12,8 +13,8 @@
     createHome = true;
     home = "/home/${mainUser}";
     initialPassword = "password";
-    extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh;
+    extraGroups = ["networkmanager" "wheel" "dialout"];
+    shell = pkgs.fish;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -25,7 +26,8 @@
     package = pkgs.nix-ld-rs;
   };
 
-  programs.zsh = {enable = true;};
+  programs.fish = {enable = true;};
+  # programs.zsh = {enable = true;};
 
   system.stateVersion = "24.11";
 
@@ -41,6 +43,7 @@
       inherit self;
       inherit system;
       inherit isDesktop;
+      inherit catppuccin;
     };
     users.${mainUser} = import ./home.nix;
   };

@@ -14,20 +14,25 @@
     zplug = {
       enable = true;
       plugins = [
-        {name = "zsh-users/zsh-autosuggestions";}
-        {name = "zsh-users/zsh-completions";}
-        {name = "zsh-users/zsh-history-substring-search";}
-        {name = "zdharma-continuum/fast-syntax-highlighting";}
-        {name = "MichaelAquilina/zsh-you-should-use";}
-        {name = "Aloxaf/fzf-tab";}
-        {name = "jeffreytse/zsh-vi-mode";}
+        # {name = "zsh-users/zsh-autosuggestions";}
+        # {name = "zsh-users/zsh-completions";}
+        # {name = "zsh-users/zsh-history-substring-search";}
+        # {name = "zdharma-continuum/fast-syntax-highlighting";}
+        # {name = "MichaelAquilina/zsh-you-should-use";}
+        # {name = "Aloxaf/fzf-tab";}
+        # {name = "jeffreytse/zsh-vi-mode";}
       ];
     };
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "eza" "fzf"];
-      theme = "bira";
+      # plugins = ["git" "eza" "fzf"];
+      # theme = "bira";
     };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.tmux = {
@@ -43,7 +48,7 @@
 
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
-      pkgs.tmuxPlugins.gruvbox
+      # pkgs.tmuxPlugins.gruvbox
     ];
   };
 }

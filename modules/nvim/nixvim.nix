@@ -22,7 +22,18 @@
     vimAlias = true;
 
     luaLoader.enable = true;
-    colorschemes.gruvbox.enable = true;
+    # colorschemes.gruvbox.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      settings = {
+        flavour = "mocha";
+        default_integrations = true;
+        styles = {
+          booleans = ["bold" "italic"];
+          conditionals = ["bold"];
+        };
+      };
+    };
 
     globals = {
       mapleader = " ";
@@ -132,6 +143,11 @@
     ];
 
     plugins = {
+      transparent = {
+        enable = true;
+        autoLoad = true;
+      };
+
       # Adds icons for plugins to ultilize in ui
       web-devicons.enable = true;
 

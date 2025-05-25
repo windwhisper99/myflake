@@ -5,6 +5,7 @@
   isDesktop,
   lib,
   system,
+  catppuccin,
   ...
 }: let
   basePkgs = with pkgs; [
@@ -60,21 +61,30 @@
     inputs.zen-browser.packages.${system}.default
     libreoffice
 
+    usbutils
+
     bluetui
 
+    esptool # Serial bootloader for CNC
+    arduino-cli
+    avrdude
 
     prusa-slicer
     openscad
     freecad
 
-    vimiv-qt # Image viewers
     imv # Image viewers
     mpv # Video player
     vlc # Video player
   ];
 in {
   imports =
-    [./home/zsh.nix ./nvim/nixvim.nix]
+    [
+      catppuccin.homeModules.catppuccin
+      # ./home/zsh.nix
+      ./home/fish.nix
+      ./nvim/nixvim.nix
+    ]
     ++ (
       if isDesktop
       then [./home/hyprland.nix]
@@ -84,7 +94,8 @@ in {
   i18n.inputMethod =
     if isDesktop
     then {
-      enabled = "fcitx5";
+      enable = true;
+      type = "fcitx5";
       fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-bamboo
@@ -92,8 +103,16 @@ in {
       ];
     }
     else {
-      enabled = null;
+      enable = false;
     };
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+
+    gtk.enable = true;
+    chromium.enable = true;
+  };
 
   home.packages =
     basePkgs
@@ -104,7 +123,6 @@ in {
     );
   home.sessionVariables = {
     TERMINAL = "kitty";
-    GTK_THEME = "gruvbox-dark";
   };
 
   xdg = {
@@ -163,22 +181,12 @@ in {
 
   gtk = {
     enable = true;
-    theme = {
-      name = "gruvbox-dark";
-      package = pkgs.gruvbox-dark-gtk;
-    };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
   };
+
   dconf.enable = true;
 
   home.stateVersion = "24.11";

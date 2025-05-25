@@ -30,8 +30,8 @@ in {
         gaps_out = 8;
         border_size = 2;
 
-        "col.active_border" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
-        "col.inactive_border" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";
+        # "col.active_border" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
+        # "col.inactive_border" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";
         layout = "dwindle";
         resize_on_border = true;
       };
@@ -41,17 +41,17 @@ in {
         explicit_sync_kms = 0;
       };
 
-      input = {
-        kb_layout = "us,vn";
-        kb_options = "grp:alt_shift_toggle";
-      };
+      # input = {
+      #   kb_layout = "us,vn";
+      #   kb_options = "grp:alt_shift_toggle";
+      # };
 
-      group = {
-        "col.border_active" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
-        "col.border_inactive" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";
-        "col.border_locked_active" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
-        "col.border_locked_inactive" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";
-      };
+      # group = {
+      #   "col.border_active" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
+      #   "col.border_inactive" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";
+      #   "col.border_locked_active" = "rgba(ebdbb2cc) rgba(fbf1c7cc) 45deg";
+      #   "col.border_locked_inactive" = "rgba(3c3836cc) rgba(1d2021cc) 45deg";
+      # };
 
       dwindle = {
         pseudotile = true;
@@ -90,23 +90,23 @@ in {
         ];
       };
 
-      decoration = {
-        rounding = 10;
-        # drop_shadow = false;
-        # rounding_power = 2;
-
-        active_opacity = 1.0;
-        inactive_opacity = 0.95;
-
-        blur = {
-          enabled = true;
-          size = 6;
-          passes = 3;
-          new_optimizations = "on";
-          ignore_opacity = "on";
-          xray = false;
-        };
-      };
+      # decoration = {
+      #   rounding = 10;
+      #   # drop_shadow = false;
+      #   # rounding_power = 2;
+      #
+      #   active_opacity = 1.0;
+      #   inactive_opacity = 0.95;
+      #
+      #   blur = {
+      #     enabled = true;
+      #     size = 6;
+      #     passes = 3;
+      #     new_optimizations = "on";
+      #     ignore_opacity = "on";
+      #     xray = false;
+      #   };
+      # };
 
       # layerrule = ["blur,waybar" "blur,rofi"];
 
@@ -187,12 +187,12 @@ in {
   programs.hyprlock = {
     enable = true;
     settings = {
-      background = {
-        path = "${self.packages.wallpapers}/cat.png";
-        color = "rgba(17,17,17,1.0)";
-        blur_passes = 3;
-        vibrancy_darkness = 0.0;
-      };
+      # background = {
+      #   path = "${self.packages.wallpapers}/cat.png";
+      #   color = "rgba(17,17,17,1.0)";
+      #   blur_passes = 3;
+      #   vibrancy_darkness = 0.0;
+      # };
 
       general = {
         no_fade_in = false;
@@ -200,46 +200,46 @@ in {
         disable_loading_bar = false;
       };
 
-      label = [
-        # Day Month Date
-        {
-          text = ''cmd[update:1000] echo -e "$(date + "%A, %B %d")"'';
-          color = "rgba(216, 222, 233, 0.70)";
-          font_size = 25;
-          font_family = "SF Pro Display Bold";
-          position = "0, 350";
-          halign = "center";
-          valign = "center";
-        }
-        # Time
-        {
-          text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
-          color = "rgba(216, 222, 233, 0.70)";
-          font_size = 120;
-          font_family = "SF Pro Display Bold";
-          position = "0, 250";
-          halign = "center";
-          valign = "center";
-        }
-      ];
-
-      input-field = {
-        size = "300, 60";
-        outline_thickness = 2;
-        dots_size = 0.2;
-        dots_spacing = 0.2;
-        dots_center = true;
-        outer_color = "rgba(0,0,0,0)";
-        inner_color = "rgba(255,255,255,0.1)";
-        font_color = "rgb(200,200,200)";
-        fade_on_empty = false;
-        font_family = "SF Pro Display Bold";
-        placeholder_text = ''<i><span foreground="##ffffff99">Enter Pass</span></i>'';
-        hide_input = false;
-        position = "0, -100";
-        halign = "center";
-        valign = "center";
-      };
+      # label = [
+      #   # Day Month Date
+      #   {
+      #     text = ''cmd[update:1000] echo -e "$(date + "%A, %B %d")"'';
+      #     color = "rgba(216, 222, 233, 0.70)";
+      #     font_size = 25;
+      #     font_family = "SF Pro Display Bold";
+      #     position = "0, 350";
+      #     halign = "center";
+      #     valign = "center";
+      #   }
+      #   # Time
+      #   {
+      #     text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
+      #     color = "rgba(216, 222, 233, 0.70)";
+      #     font_size = 120;
+      #     font_family = "SF Pro Display Bold";
+      #     position = "0, 250";
+      #     halign = "center";
+      #     valign = "center";
+      #   }
+      # ];
+      #
+      # input-field = {
+      #   size = "300, 60";
+      #   outline_thickness = 2;
+      #   dots_size = 0.2;
+      #   dots_spacing = 0.2;
+      #   dots_center = true;
+      #   outer_color = "rgba(0,0,0,0)";
+      #   inner_color = "rgba(255,255,255,0.1)";
+      #   font_color = "rgb(200,200,200)";
+      #   fade_on_empty = false;
+      #   font_family = "SF Pro Display Bold";
+      #   placeholder_text = ''<i><span foreground="##ffffff99">Enter Pass</span></i>'';
+      #   hide_input = false;
+      #   position = "0, -100";
+      #   halign = "center";
+      #   valign = "center";
+      # };
     };
   };
 
