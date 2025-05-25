@@ -7,7 +7,16 @@
       '';
     };
 
-    shellAbbrs = {q = "exit";};
+    shellAbbrs = {
+      q = "exit";
+      pn = "pnpm";
+
+      # Rust and Cargo aliases
+      cn = "cargo new";
+      cr = "cargo run";
+      ct = "cargo test";
+      cb = "cargo build";
+    };
 
     plugins = [
       {
