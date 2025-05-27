@@ -13,9 +13,11 @@ in {
 
     settings = {
       "$terminal" = "kitty";
+      "$file" = "nemo";
       "$appmenu" = "rofi -show drun";
       "$winmenu" = "rofi -show window";
       "$runmenu" = "rofi -show run";
+      "$powermenu" = "rofi -show power";
       "$screenshot-region" = "hyprshot -m region --clipboard-only";
 
       "$mod" = "SUPER";
@@ -98,11 +100,13 @@ in {
       bind = [
         # Application
         "$mod, Q, exec, $terminal"
+        "$mod, E, exec, $file"
         "$mod, C, killactive,"
-        # "$mod, R, exec, $runmenu"
+        "$mod, R, exec, $runmenu"
         "$mod, space, exec, $appmenu"
         "$mod, W, exec, $winmenu"
-        "$mod, M, exit,"
+        "$mod, P, exec, $powermenu"
+        # "$mod, M, exit,"
         "$mod, V, toggleFloating,"
         # Screenshot
         "$mod SHIFT, S, exec, $screenshot-region"
@@ -210,7 +214,7 @@ in {
       splash = false;
       splash_offset = 2.0;
       preload = ["${self.packages.wallpapers}/${wallpaper}"];
-      wallpaper = [",${self.packages.wallpapers}/flatppuccin.png"];
+      wallpaper = [",${self.packages.wallpapers}/${wallpaper}"];
     };
   };
 }

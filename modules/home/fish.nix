@@ -10,12 +10,19 @@
     shellAbbrs = {
       q = "exit";
       pn = "pnpm";
+      cls = "clear";
+
+      # Shortcut for nix
+      ns = "sudo nixos-rebuild switch --flake ./#nixos";
+      nu = "sudo nix flake update";
 
       # Rust and Cargo aliases
+      c = "cargo";
       cn = "cargo new";
       cr = "cargo run";
       ct = "cargo test";
       cb = "cargo build";
+      cc = "cargo clippy";
     };
 
     plugins = [

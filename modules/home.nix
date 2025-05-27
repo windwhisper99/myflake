@@ -69,6 +69,7 @@
     usbutils
 
     bluetui
+    overskride # GUI bluetooth manager
 
     esptool # Serial bootloader for CNC
     arduino-cli
@@ -86,7 +87,6 @@ in {
   imports =
     [
       catppuccin.homeModules.catppuccin
-      # ./home/zsh.nix
       ./home/fish.nix
       ./nvim/nixvim.nix
     ]
