@@ -4,7 +4,7 @@
   ...
 }: let
   hyprland-config = import ./hyprland-config.nix;
-  wallpaper = "comfy-home.png";
+  wallpaper = "city-horizon.jpg";
 in {
   imports = [./waybar.nix ./rofi.nix ./kitty.nix];
 

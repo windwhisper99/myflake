@@ -11,6 +11,7 @@
       q = "exit";
       pn = "pnpm";
       cls = "clear";
+      v = "vi .";
 
       # Shortcut for nix
       ns = "sudo nixos-rebuild switch --flake ./#nixos";
