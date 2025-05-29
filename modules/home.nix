@@ -171,6 +171,8 @@ in {
     extraConfig = {
       init.defaultBranch = "main";
     };
+
+    lfs.enable = true;
   };
 
   programs.lf = {
