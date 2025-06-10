@@ -52,15 +52,17 @@
           inherit inputs;
           inherit system;
           inherit self;
+          inherit catppuccin;
           mainUser = "liribell";
           isDesktop = false;
         };
         system = system;
         modules = [
           nixos-wsl.nixosModules.default
-          ./modules/wsl.nix
+          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           ./modules/based.nix
+          ./modules/wsl.nix
         ];
       };
 
