@@ -16,7 +16,7 @@
       sync_to_monitor = true;
       window_padding_width = 8;
 
-      cursor_trail = 3;
+      cursor_trail = 2;
     };
   };
 }
