@@ -57,8 +57,7 @@
     vscode
     brave
 
-    discord
-    betterdiscordctl
+    legcord
 
     blender
     inkscape
