@@ -196,10 +196,10 @@ in {
     settings = {
       general = {lock_cmd = "pidof hyprlock || hyprlock";};
 
-      # Lock screen on 5 mins
+      # Lock screen on 10 mins
       listener = [
         {
-          timeout = 300;
+          timeout = 600;
           on-timeout = "loginctl lock-session";
         }
       ];
