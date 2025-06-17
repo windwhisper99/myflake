@@ -39,7 +39,7 @@
     # Development
     clang
     clang-tools
-    nodejs_22
+    nodejs_24
     pnpm
     cargo
     rustc
@@ -48,9 +48,6 @@
     just
 
     obsidian
-
-    # Games
-    solitaire-tui
   ];
   desktopPkgs = with pkgs; [
     # Desktop Application
@@ -132,7 +129,10 @@ in {
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
       config.common.default = "";
     };
 

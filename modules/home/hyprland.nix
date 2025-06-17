@@ -198,10 +198,10 @@ in {
 
       # Lock screen on 10 mins
       listener = [
-        {
-          timeout = 600;
-          on-timeout = "loginctl lock-session";
-        }
+        # {
+        #   timeout = 600;
+        #   on-timeout = "loginctl lock-session";
+        # }
       ];
     };
   };
